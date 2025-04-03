@@ -1,0 +1,57 @@
+/* Dark Theme */
+$dark-primary: #12131a;
+$dark-primary-900: #12131a;
+$dark-primary-800: #21222c;
+$dark-primary-700: #2a2b37;
+$dark-primary-500: #404254;
+
+$dark-text-primary: #f2f2f7;
+$dark-text-secondary: #e4e4ef;
+
+/* Light Theme */
+$light-primary: #ffffff;
+$light-primary-200: #e4e4ef;
+$light-primary-100: #f2f2f7;
+
+$light-text-primary: #12131a;
+$light-text-secondary: #2a2b37;
+
+/* Accent Colors  */
+$purple-400: #d3a0fa;
+$purple-500: #c27cf8;
+$yellow-500: #ff9f00;
+$orange-500: #fe8159;
+$orange-600: #da3701;
+
+:root {
+  --primary: #{$light-primary};
+  --primary-text: #{$light-text-primary};
+}
+
+[data-theme="dark"] {
+  --primary: #{$dark-primary};
+  --primary-text: #{$dark-text-primary};
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("../assets/fonts/DM_Sans//DMSans-VariableFont_opsz\,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("../assets/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz\,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+body {
+  background-color: var(--primary);
+  color: var(--primary-text);
+  font-family: "DM Sans", sans-serif;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
