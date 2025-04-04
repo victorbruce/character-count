@@ -45,6 +45,12 @@
   width: 20px;
   height: 20px;
 }
+.nav__button .icon-sun {
+  display: none;
+}
+.nav__button .icon-moon {
+  display: block;
+}
 @media (min-width: 768px) {
   .nav__button {
     width: 44px;
@@ -61,6 +67,12 @@
   display: block;
 }
 [data-theme=dark] .nav__logo--light {
+  display: none;
+}
+[data-theme=dark] .nav__button .icon-sun {
+  display: block;
+}
+[data-theme=dark] .nav__button .icon-moon {
   display: none;
 }
 
@@ -157,7 +169,7 @@
   background-color: var(--checked-bg);
   border-color: transparent;
   position: relative;
-  background-image: url("../../assets/images/icon-check.svg");
+  background-image: url("/assets/images/icon-check.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
