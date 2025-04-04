@@ -14,9 +14,27 @@
 
     <title>Frontend Mentor | Character counter</title>
   </head>
-  <body>
-    <button id="theme-toggle">Toggle Theme</button>
-    <h1>Hello world</h1>
+  <body class="container">
+    <nav class="nav">
+      <!-- dark mode logo -->
+      <a href="/" class="nav__logo nav__logo--dark">
+        <img
+          src="./assets/images/logo-dark-theme.svg"
+          alt="Dark Counter Character Logo"
+        />
+      </a>
+      <!-- light mode logo -->
+      <a href="/" class="nav__logo nav__logo--light">
+        <img
+          src="./assets/images/logo-light-theme.svg"
+          class="Light Counter Character Logo"
+        />
+      </a>
+
+      <button id="theme-toggle" class="nav__button">
+        <img src="./assets/images/icon-sun.svg" alt="" aria-hidden="true" />
+      </button>
+    </nav>
     <script src="./js/app.js"></script>
   </body>
 </html>
