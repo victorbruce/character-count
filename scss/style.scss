@@ -33,10 +33,10 @@ $orange-600: #da3701;
   --primary: #{$light-primary};
   --primary-text: #{$light-text-primary};
   --toggle-button: #{$light-primary-200};
-  --textfield-border: #{$dark-primary-700};
-  --textfield-bg: #{$dark-primary-800};
-  --textfield-placeholder: #{$dark-text-secondary};
-  --checkbox-border: #{$light-primary-200};
+  --textfield-border: #{$light-primary-200};
+  --textfield-bg: #{$light-primary-100};
+  --textfield-placeholder: #{$dark-primary-700};
+  --checkbox-border: #{$dark-primary-900};
   --checked-bg: #{$purple-400};
   --purple-light: #{$purple-400};
   --purple-dark: #{$purple-500};
@@ -44,7 +44,7 @@ $orange-600: #da3701;
   --orange-dark: #{$orange-600};
   --yellow: #{$yellow-500};
   --card-text: #{$dark-primary};
-  --bar-bg: #{$dark-primary-800};
+  --bar-bg: #{$light-primary-100};
 }
 
 [data-theme="dark"] {
@@ -53,6 +53,11 @@ $orange-600: #da3701;
   --secondary-text: #{$dark-text-secondary};
   --toggle-button: #{$dark-primary-700};
   --checkbox-border: #{$light-primary-200};
+  --textfield-bg: #{$dark-primary-800};
+  --textfield-placeholder: #{$light-primary-200};
+  --textfield-border: #{$dark-primary-700};
+  --checkbox-border: #{$light-primary-200};
+  --bar-bg: #{$dark-primary-800};
 }
 
 @font-face {

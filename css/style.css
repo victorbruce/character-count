@@ -263,6 +263,7 @@
 }
 .letter-density__letter {
   font-size: 16px;
+  width: 20px;
 }
 .letter-density__bar {
   flex: 1;
@@ -298,10 +299,10 @@
   --primary: #ffffff;
   --primary-text: #12131a;
   --toggle-button: #e4e4ef;
-  --textfield-border: #2a2b37;
-  --textfield-bg: #21222c;
-  --textfield-placeholder: #e4e4ef;
-  --checkbox-border: #e4e4ef;
+  --textfield-border: #e4e4ef;
+  --textfield-bg: #f2f2f7;
+  --textfield-placeholder: #2a2b37;
+  --checkbox-border: #12131a;
   --checked-bg: #d3a0fa;
   --purple-light: #d3a0fa;
   --purple-dark: #c27cf8;
@@ -309,7 +310,7 @@
   --orange-dark: #da3701;
   --yellow: #ff9f00;
   --card-text: #12131a;
-  --bar-bg: #21222c;
+  --bar-bg: #f2f2f7;
 }
 
 [data-theme=dark] {
@@ -318,6 +319,11 @@
   --secondary-text: #e4e4ef;
   --toggle-button: #2a2b37;
   --checkbox-border: #e4e4ef;
+  --textfield-bg: #21222c;
+  --textfield-placeholder: #e4e4ef;
+  --textfield-border: #2a2b37;
+  --checkbox-border: #e4e4ef;
+  --bar-bg: #21222c;
 }
 
 @font-face {
