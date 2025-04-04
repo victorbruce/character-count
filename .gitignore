@@ -38,7 +38,3 @@ npm-debug.log*
 *.pem
 .DS_Store
 Thumbs.db
-
-css/
-style.css
-style.css.map
