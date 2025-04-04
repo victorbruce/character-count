@@ -1,5 +1,6 @@
-@import './components/nav.scss';
-@import './components/hero.scss';
+@import "./components/nav.scss";
+@import "./components/hero.scss";
+@import "./components/form.scss";
 
 /* Dark Theme */
 $dark-primary: #12131a;
@@ -30,12 +31,19 @@ $orange-600: #da3701;
   --primary: #{$light-primary};
   --primary-text: #{$light-text-primary};
   --toggle-button: #{$light-primary-200};
+  --textfield-border: #{$dark-primary-700};
+  --textfield-bg: #{$dark-primary-800};
+  --textfield-placeholder: #{$dark-text-secondary};
+  --checkbox-border: #{$light-primary-200};
+  --checked-bg: #{$purple-400};
 }
 
 [data-theme="dark"] {
   --primary: #{$dark-primary};
   --primary-text: #{$dark-text-primary};
+  --secondary-text: #{$dark-text-secondary};
   --toggle-button: #{$dark-primary-700};
+  --checkbox-border: #{$light-primary-200};
 }
 
 @font-face {
@@ -52,6 +60,12 @@ $orange-600: #da3701;
     format("truetype");
   font-weight: 100 900;
   font-style: italic;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {

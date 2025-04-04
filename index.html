@@ -37,11 +37,46 @@
       </button>
     </nav>
     <!-- main page -->
-     <main>
+    <main>
       <header class="hero" role="banner" aria-labelledby="hero-title">
-        <h1 class="hero__title" id="hero-title">Analyze your text in real-time.</h1>
+        <h1 class="hero__title" id="hero-title">
+          Analyze your text in real-time.
+        </h1>
       </header>
-     </main>
+      <!-- user input fields -->
+      <section class="form-area" aria-labelledby="form-section">
+        <form>
+          <div>
+            <label for="text-input" id="form-section">
+              <textarea
+                placeholder="Start texting here...(or paste your text)"
+                aria-describedby="textarea-help"
+              ></textarea>
+            </label>
+            <small id="textarea-help"
+              >You can paste or type your text here for analysis.</small
+            >
+          </div>
+          <div
+            class="form-area__checkboxes"
+            role="group"
+            aria-labelledby="checkboxes-group"
+          >
+            <div class="form-area__checkboxes--group">
+              <div>
+                <input type="checkbox" id="exclude-spaces" />
+                <label for="exclude-spaces">Exclude Spaces</label>
+              </div>
+              <div>
+                <input type="checkbox" id="character-limit" />
+                <label for="character-limit"> Set Character Limit</label>
+              </div>
+            </div>
+            <p>Approx. reading time: &gt; 1 minute</p>
+          </div>
+        </form>
+      </section>
+    </main>
     <script src="./js/app.js"></script>
   </body>
 </html>
