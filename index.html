@@ -53,7 +53,7 @@
                 aria-describedby="textarea-help"
               ></textarea>
             </label>
-            <small id="textarea-help"
+            <small id="textarea-help" class="visually-hidden"
               >You can paste or type your text here for analysis.</small
             >
           </div>
@@ -75,6 +75,48 @@
             <p>Approx. reading time: &gt; 1 minute</p>
           </div>
         </form>
+      </section>
+      <!-- cards -->
+      <section class="cards" aria-labelledby="text-analysis-summary">
+        <h2 id="text-analysis-summary" class="visually-hidden">
+          Text Analysis Summary
+        </h2>
+        <div
+          class="cards__card cards__card--characters"
+          aria-labelledby="characters-title"
+        >
+          <p aria-label="278 total characters">278</p>
+          <h3 id="characters-title">Total Characters</h3>
+          <img
+            src="./assets/images/pattern-character-count.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+        <div
+          class="cards__card cards__card--words"
+          aria-labelledby="words-title"
+        >
+          <p aria-label="39 words">39</p>
+          <h3 id="words-title">Word Count</h3>
+          <img
+            src="./assets/images/pattern-word-count.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+        <div
+          class="cards__card cards__card--sentences"
+          aria-labelledby="sentences-title"
+        >
+          <p aria-label="4 sentences">04</p>
+          <h3 id="sentences-title">Sentence Count</h3>
+          <img
+            src="./assets/images/pattern-sentence-count.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
       </section>
     </main>
     <script src="./js/app.js"></script>

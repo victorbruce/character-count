@@ -1,6 +1,7 @@
 @import "./components/nav.scss";
 @import "./components/hero.scss";
 @import "./components/form.scss";
+@import "./components/card.scss";
 
 /* Dark Theme */
 $dark-primary: #12131a;
@@ -36,6 +37,12 @@ $orange-600: #da3701;
   --textfield-placeholder: #{$dark-text-secondary};
   --checkbox-border: #{$light-primary-200};
   --checked-bg: #{$purple-400};
+  --purple-light: #{$purple-400};
+  --purple-dark: #{$purple-500};
+  --orange-light: #{$orange-500};
+  --orange-dark: #{$orange-600};
+  --yellow: #{$yellow-500};
+  --card-text: #{$dark-primary};
 }
 
 [data-theme="dark"] {
@@ -83,4 +90,16 @@ body {
 .logo {
   width: 180px;
   height: 30px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  overflow: hidden;
 }
