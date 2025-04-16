@@ -17,20 +17,26 @@ document.getElementById("theme-toggle").addEventListener("click", () => {
   applyTheme(newTheme);
 });
 
+// global variables
+const textarea = document.getElementById("textareaField");
 const characterCountElement = document.querySelector(
   ".cards__card--characters .card__count"
 );
+const exludesSpacesCheckBox = document.getElementById("exclude-spaces");
 
-function textareaInput() {
-  // get the textarea input field
-  const textarea = document.getElementById("textareaField");
-  textarea.addEventListener("input", () => {
-    const characterCount = textarea.value.length;
+function characterCount() {
+  let text = textarea.value;
+  const excludeSpaces = exludesSpacesCheckBox.checked;
 
-    characterCountElement.textContent =
-      characterCount === 0 ? "00" : characterCount;
-  });
+  // is excludeSpaces checkbox checked?
+  if (excludeSpaces) {
+    text = text.replace(/\s/g, ""); // remove spaces
+  }
+
+  // get text length and update count element
+  const count = text.length;
+  characterCountElement.textContent = count;
 }
 
-
-textareaInput();
+textarea.addEventListener("input", updateCharacterCount);
+exludesSpacesCheckBox.addEventListener("change", updateCharacterCount);
