@@ -22,12 +22,16 @@ const characterCountElement = document.getElementById("character-count");
 const wordCountElement = document.getElementById("word-count");
 const sentenceCountElement = document.getElementById("sentence-count");
 const warningMessage = document.getElementById("warning-msg");
+const emptyMessage = document.getElementById("empty-message");
+const letterDensityContainer = document.getElementById(
+  "letter-density-container"
+);
+const collapseBtn = document.getElementById("collapse-btn");
 
 const textarea = document.getElementById("textareaField");
 const exludesSpacesCheckBox = document.getElementById("exclude-spaces");
 const characterLimitCheckBox = document.getElementById("character-limit");
 const characterLimitInput = document.querySelector(".limit-input");
-
 
 // function to calculate the characters counted
 function characterCount() {
@@ -100,6 +104,20 @@ function toggleCharacterLimitField() {
   characterCount();
 }
 
+function toggleEmptyMessage() {
+  const isEmpty = textarea.value.trim().length === 0;
+
+  if (isEmpty) {
+    emptyMessage.classList.remove("is-hidden");
+    letterDensityContainer.classList.add("is-hidden");
+    collapseBtn.classList.add("is-hidden");
+  } else {
+    emptyMessage.classList.add("is-hidden");
+    letterDensityContainer.classList.remove("is-hidden");
+    collapseBtn.classList.remove("is-hidden");
+  }
+}
+
 function checkCharacterLimit(currentCount) {
   const limitActive = characterLimitCheckBox.checked;
   const limitValue = parseInt(characterLimitInput.value);
@@ -137,6 +155,7 @@ textarea.addEventListener("input", () => {
   wordCount();
   sentenceCount();
   updateReadingTime();
+  toggleEmptyMessage();
 });
 characterLimitInput.addEventListener("input", characterCount);
 exludesSpacesCheckBox.addEventListener("change", characterCount);

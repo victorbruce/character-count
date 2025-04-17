@@ -46,6 +46,7 @@ $orange-600: #da3701;
   --card-text: #{$dark-primary};
   --bar-bg: #{$light-primary-100};
   --error: #{$orange-600};
+  --empty-message: #404254;
 }
 
 [data-theme="dark"] {
@@ -60,6 +61,7 @@ $orange-600: #da3701;
   --checkbox-border: #{$light-primary-200};
   --bar-bg: #{$dark-primary-800};
   --error: #{$orange-500};
+  --empty-message: #{$dark-text-secondary};
 }
 
 @font-face {
@@ -111,4 +113,8 @@ body {
   clip: rect(0, 0, 0, 0);
   clip-path: inset(50%);
   overflow: hidden;
+}
+
+.is-hidden {
+  display: none !important;
 }
