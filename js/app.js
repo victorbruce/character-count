@@ -18,13 +18,16 @@ document.getElementById("theme-toggle").addEventListener("click", () => {
 });
 
 // global variables
-const textarea = document.getElementById("textareaField");
-const characterCountElement = document.getElementById('character-count')
+const characterCountElement = document.getElementById("character-count");
 const wordCountElement = document.getElementById("word-count");
+const sentenceCountElement = document.getElementById("sentence-count");
+const warningMessage = document.getElementById("warning-msg");
+
+const textarea = document.getElementById("textareaField");
 const exludesSpacesCheckBox = document.getElementById("exclude-spaces");
 const characterLimitCheckBox = document.getElementById("character-limit");
 const characterLimitInput = document.querySelector(".limit-input");
-const warningMessage = document.getElementById("warning-msg");
+
 
 // function to calculate the characters counted
 function characterCount() {
@@ -54,11 +57,30 @@ function getWordCount(text) {
   return words.length;
 }
 
+// function to get the sentence count
+function getSentenceCount(text) {
+  const trimmedText = text.trim();
+
+  if (trimmedText === "") return 0;
+
+  const sentences = trimmedText
+    .split(/[\.\!\?]+(?:\s|$)/)
+    .filter((sentence) => sentence.trim().length > 0);
+
+  return sentences.length;
+}
+
 function wordCount() {
   const text = textarea.value;
   const count = getWordCount(text);
 
   wordCountElement.textContent = count;
+}
+
+function sentenceCount() {
+  const text = textarea.value;
+  const count = getSentenceCount(text);
+  sentenceCountElement.textContent = count;
 }
 
 function toggleCharacterLimitField() {
@@ -113,6 +135,7 @@ function updateReadingTime() {
 textarea.addEventListener("input", () => {
   characterCount();
   wordCount();
+  sentenceCount();
   updateReadingTime();
 });
 characterLimitInput.addEventListener("input", characterCount);
