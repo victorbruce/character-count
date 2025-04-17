@@ -145,7 +145,13 @@
       <!-- info graphics -->
       <section class="letter-density">
         <h2 class="letter-density__title">Letter Density</h2>
-        <div class="letter-density__items">
+        <p id="empty-message" class="letter-density__empty-message">
+          No characters found. Start typing to see letter density.
+        </p>
+        <div
+          id="letter-density-container"
+          class="letter-density__items is-hidden"
+        >
           <div class="letter-density__item">
             <span class="letter-density__letter">E</span>
             <div class="letter-density__bar">
@@ -186,7 +192,7 @@
             <span class="letter-density__count">21 (8.43%)</span>
           </div>
         </div>
-        <button class="letter-density__more">
+        <button id="collapse-btn" class="letter-density__more is-hidden">
           See more
           <svg
             width="12"

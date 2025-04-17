@@ -290,6 +290,9 @@
 .letter-density {
   padding: 0px 16px;
 }
+.letter-density__empty-message {
+  color: var(--empty-message);
+}
 .letter-density__title {
   font-size: 24px;
   font-weight: 600;
@@ -356,6 +359,7 @@
   --card-text: #12131a;
   --bar-bg: #f2f2f7;
   --error: #da3701;
+  --empty-message: #404254;
 }
 
 [data-theme=dark] {
@@ -370,6 +374,7 @@
   --checkbox-border: #e4e4ef;
   --bar-bg: #21222c;
   --error: #fe8159;
+  --empty-message: #e4e4ef;
 }
 
 @font-face {
@@ -417,6 +422,10 @@ body {
   clip: rect(0, 0, 0, 0);
   clip-path: inset(50%);
   overflow: hidden;
+}
+
+.is-hidden {
+  display: none !important;
 }
 
 /*# sourceMappingURL=style.css.map */

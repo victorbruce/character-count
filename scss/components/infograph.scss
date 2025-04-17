@@ -1,6 +1,10 @@
 .letter-density {
   padding: 0px 16px;
 
+  &__empty-message {
+    color: var(--empty-message);
+  }
+
   &__title {
     font-size: 24px;
     font-weight: 600;
