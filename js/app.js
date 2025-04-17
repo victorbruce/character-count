@@ -23,6 +23,9 @@ const characterCountElement = document.querySelector(
   ".cards__card--characters .card__count"
 );
 const exludesSpacesCheckBox = document.getElementById("exclude-spaces");
+const characterLimitCheckBox = document.getElementById("character-limit");
+const characterLimitInput = document.querySelector(".limit-input");
+const warningMessage = document.getElementById("warning-msg");
 
 function characterCount() {
   let text = textarea.value;
@@ -35,8 +38,49 @@ function characterCount() {
 
   // get text length and update count element
   const count = text.length;
-  characterCountElement.textContent = count;
+  characterCountElement.textContent = count < 10 ? `0${count}` : count;
+
+  checkCharacterLimit(count);
 }
 
-textarea.addEventListener("input", updateCharacterCount);
-exludesSpacesCheckBox.addEventListener("change", updateCharacterCount);
+function toggleCharacterLimitField() {
+  if (characterLimitCheckBox.checked) {
+    characterLimitInput.classList.add("limit-input-active");
+    characterLimitInput.value = 0;
+    characterLimitInput.disabled = false;
+    warningMessage.classList.remove("form-area__warning-msg-active");
+  } else {
+    characterLimitInput.classList.remove("limit-input-active");
+    characterLimitInput.disabled = true;
+    warningMessage.classList.remove("form-area__warning-msg-active");
+  }
+
+  characterCount();
+}
+
+function checkCharacterLimit(currentCount) {
+  const limitActive = characterLimitCheckBox.checked;
+  const limitValue = parseInt(characterLimitInput.value);
+
+  if (!limitActive || isNaN(limitValue) || limitValue === 0) {
+    warningMessage.classList.remove("form-area__warning-msg-active");
+    textarea.classList.remove("form-area__textarea-limit-exceeded");
+    return;
+  }
+
+  if (currentCount > limitValue) {
+    warningMessage.classList.add("form-area__warning-msg-active");
+    textarea.classList.add("form-area__textarea-limit-exceeded");
+
+    warningMessage.innerHTML = `<img src="../assets/images/icon-info.svg" alt="warning" class="form-area__warning-icon" /> Limit reached! Your text exceeds ${limitValue} characters.`;
+  } else {
+    warningMessage.classList.remove("form-area__warning-msg-active");
+    textarea.classList.remove("form-area__textarea-limit-exceeded");
+  }
+}
+
+// Listeners
+textarea.addEventListener("input", characterCount);
+characterLimitInput.addEventListener("input", characterCount);
+exludesSpacesCheckBox.addEventListener("change", characterCount);
+characterLimitCheckBox.addEventListener("change", toggleCharacterLimitField);

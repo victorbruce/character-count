@@ -45,6 +45,7 @@ $orange-600: #da3701;
   --yellow: #{$yellow-500};
   --card-text: #{$dark-primary};
   --bar-bg: #{$light-primary-100};
+  --error: #{$orange-600};
 }
 
 [data-theme="dark"] {
@@ -58,6 +59,7 @@ $orange-600: #da3701;
   --textfield-border: #{$dark-primary-700};
   --checkbox-border: #{$light-primary-200};
   --bar-bg: #{$dark-primary-800};
+  --error: #{$orange-500};
 }
 
 @font-face {

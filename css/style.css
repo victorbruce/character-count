@@ -124,6 +124,13 @@
   color: var(--textfield-placeholder);
 }
 .form-area textarea:focus {
+  border: 2px solid var(--purple-dark);
+  outline: none;
+  box-shadow: 0 0 5px var(--purple-light);
+}
+.form-area__textarea-limit-exceeded {
+  border: 1px solid var(--error) !important;
+  box-shadow: 0 0 5px var(--orange-600) !important;
   outline: none;
 }
 .form-area__checkboxes {
@@ -180,6 +187,31 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.form-area__warning-msg {
+  display: none;
+}
+.form-area__warning-msg-active {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+  color: var(--error);
+}
+
+.limit-input {
+  display: none;
+}
+
+.limit-input-active {
+  display: block !important;
+  padding: 4px 12px;
+  width: 55px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid var(--textfield-border);
+  background-color: transparent;
+  color: var(--primary-text);
 }
 
 .cards {
@@ -323,6 +355,7 @@
   --yellow: #ff9f00;
   --card-text: #12131a;
   --bar-bg: #f2f2f7;
+  --error: #da3701;
 }
 
 [data-theme=dark] {
@@ -336,6 +369,7 @@
   --textfield-border: #2a2b37;
   --checkbox-border: #e4e4ef;
   --bar-bg: #21222c;
+  --error: #fe8159;
 }
 
 @font-face {
