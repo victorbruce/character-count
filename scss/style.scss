@@ -118,3 +118,7 @@ body {
 .is-hidden {
   display: none !important;
 }
+
+.letter-density__item.is-collapsed {
+  display: none;
+}

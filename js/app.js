@@ -168,11 +168,16 @@ function renderLetterDensity() {
     (a, b) => b[1] - a[1]
   );
 
-  sortedLetters.forEach(([letter, count]) => {
+  sortedLetters.forEach(([letter, count], index) => {
     const percent = ((count / totalLetters) * 100).toFixed(2);
 
     const item = document.createElement("div");
     item.classList.add("letter-density__item");
+
+    if (index >= 5) {
+      item.classList.add("is-collapsed");
+      item.style.display = "none";
+    }
 
     item.innerHTML = `
       <span class="letter-density__letter">${letter}</span>
@@ -185,6 +190,11 @@ function renderLetterDensity() {
   });
 
   letterDensityContainer.classList.remove("is-hidden");
+
+  if (sortedLetters.length > 5) {
+    collapseBtn.classList.remove("is-hidden");
+    collapseBtn.textContent = "More";
+  }
 }
 
 // Listeners
@@ -199,3 +209,17 @@ textarea.addEventListener("input", () => {
 characterLimitInput.addEventListener("input", characterCount);
 exludesSpacesCheckBox.addEventListener("change", characterCount);
 characterLimitCheckBox.addEventListener("change", toggleCharacterLimitField);
+
+collapseBtn.addEventListener("click", () => {
+  const hiddenItems = letterDensityContainer.querySelectorAll(
+    ".letter-density__item.is-collapsed"
+  );
+
+  const isExpanded = collapseBtn.textContent === "Less";
+
+  hiddenItems.forEach((item) => {
+    item.style.display = isExpanded ? "none" : "flex";
+  });
+
+  collapseBtn.textContent = isExpanded ? "More" : "Less";
+});
