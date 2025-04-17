@@ -49,10 +49,12 @@ function toggleCharacterLimitField() {
     characterLimitInput.value = 0;
     characterLimitInput.disabled = false;
     warningMessage.classList.remove("form-area__warning-msg-active");
+    textarea.classList.remove("form-area__textarea-limit-exceeded");
   } else {
     characterLimitInput.classList.remove("limit-input-active");
     characterLimitInput.disabled = true;
     warningMessage.classList.remove("form-area__warning-msg-active");
+    textarea.classList.remove("form-area__textarea-limit-exceeded");
   }
 
   characterCount();
@@ -79,8 +81,21 @@ function checkCharacterLimit(currentCount) {
   }
 }
 
+function updateReadingTime() {
+  const text = textarea.value.trim();
+  const wordCount = text === "" ? 0 : text.split(/\s+/).length;
+  const wordsPerMinute = 100;
+  const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+  const readingTimeElement = document.getElementById("reading-time");
+  readingTimeElement.textContent = `Approx. reading time: > ${readingTime} minutes;`;
+}
+
 // Listeners
-textarea.addEventListener("input", characterCount);
+textarea.addEventListener("input", () => {
+  characterCount();
+  updateReadingTime();
+});
 characterLimitInput.addEventListener("input", characterCount);
 exludesSpacesCheckBox.addEventListener("change", characterCount);
 characterLimitCheckBox.addEventListener("change", toggleCharacterLimitField);
