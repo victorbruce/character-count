@@ -149,6 +149,44 @@ function updateReadingTime() {
   readingTimeElement.textContent = `Approx. reading time: > ${readingTime} minutes;`;
 }
 
+function renderLetterDensity() {
+  const text = textarea.value.toUpperCase().replace(/[^A-Z]/g, "");
+  const totalLetters = text.length;
+  letterDensityContainer.innerHTML = "";
+
+  if (totalLetters === 0) {
+    letterDensityContainer.classList.add("is-hidden");
+    return;
+  }
+
+  const letterCounts = {};
+  for (let char of text) {
+    letterCounts[char] = (letterCounts[char] || 0) + 1;
+  }
+
+  const sortedLetters = Object.entries(letterCounts).sort(
+    (a, b) => b[1] - a[1]
+  );
+
+  sortedLetters.forEach(([letter, count]) => {
+    const percent = ((count / totalLetters) * 100).toFixed(2);
+
+    const item = document.createElement("div");
+    item.classList.add("letter-density__item");
+
+    item.innerHTML = `
+      <span class="letter-density__letter">${letter}</span>
+      <div class="letter-density__bar">
+        <div class="letter-density__fill" style="width: ${percent}%"></div>
+      </div>
+      <span class="letter-density__count">${count} (${percent}%)</span>
+    `;
+    letterDensityContainer.appendChild(item);
+  });
+
+  letterDensityContainer.classList.remove("is-hidden");
+}
+
 // Listeners
 textarea.addEventListener("input", () => {
   characterCount();
@@ -156,6 +194,7 @@ textarea.addEventListener("input", () => {
   sentenceCount();
   updateReadingTime();
   toggleEmptyMessage();
+  renderLetterDensity();
 });
 characterLimitInput.addEventListener("input", characterCount);
 exludesSpacesCheckBox.addEventListener("change", characterCount);
