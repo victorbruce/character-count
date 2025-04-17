@@ -19,14 +19,14 @@ document.getElementById("theme-toggle").addEventListener("click", () => {
 
 // global variables
 const textarea = document.getElementById("textareaField");
-const characterCountElement = document.querySelector(
-  ".cards__card--characters .card__count"
-);
+const characterCountElement = document.getElementById('character-count')
+const wordCountElement = document.getElementById("word-count");
 const exludesSpacesCheckBox = document.getElementById("exclude-spaces");
 const characterLimitCheckBox = document.getElementById("character-limit");
 const characterLimitInput = document.querySelector(".limit-input");
 const warningMessage = document.getElementById("warning-msg");
 
+// function to calculate the characters counted
 function characterCount() {
   let text = textarea.value;
   const excludeSpaces = exludesSpacesCheckBox.checked;
@@ -41,6 +41,24 @@ function characterCount() {
   characterCountElement.textContent = count < 10 ? `0${count}` : count;
 
   checkCharacterLimit(count);
+}
+
+// funtion to get the words count
+function getWordCount(text) {
+  const trimmedText = text.trim();
+
+  if (trimmedText === "") return 0;
+
+  const words = trimmedText.split(/\s+/);
+
+  return words.length;
+}
+
+function wordCount() {
+  const text = textarea.value;
+  const count = getWordCount(text);
+
+  wordCountElement.textContent = count;
 }
 
 function toggleCharacterLimitField() {
@@ -84,7 +102,7 @@ function checkCharacterLimit(currentCount) {
 function updateReadingTime() {
   const text = textarea.value.trim();
   const wordCount = text === "" ? 0 : text.split(/\s+/).length;
-  const wordsPerMinute = 100;
+  const wordsPerMinute = 200;
   const readingTime = Math.ceil(wordCount / wordsPerMinute);
 
   const readingTimeElement = document.getElementById("reading-time");
@@ -94,6 +112,7 @@ function updateReadingTime() {
 // Listeners
 textarea.addEventListener("input", () => {
   characterCount();
+  wordCount();
   updateReadingTime();
 });
 characterLimitInput.addEventListener("input", characterCount);
