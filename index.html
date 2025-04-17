@@ -60,14 +60,18 @@
           <div>
             <label for="text-input" id="form-section">
               <textarea
+                id="textareaField"
                 placeholder="Start texting here...(or paste your text)"
                 aria-describedby="textarea-help"
+                class=""
               ></textarea>
             </label>
             <small id="textarea-help" class="visually-hidden"
               >You can paste or type your text here for analysis.</small
             >
           </div>
+          <p id="warning-msg" class="form-area__warning-msg"></p>
+
           <div
             class="form-area__checkboxes"
             role="group"
@@ -82,8 +86,11 @@
                 <input type="checkbox" id="character-limit" />
                 <label for="character-limit"> Set Character Limit</label>
               </div>
+              <div>
+                <input type="text" class="limit-input" />
+              </div>
             </div>
-            <p>Approx. reading time: &gt; 1 minute</p>
+            <p id="reading-time">Approx. reading time: &gt; 0 minute</p>
           </div>
         </form>
       </section>
@@ -96,7 +103,13 @@
           class="cards__card cards__card--characters"
           aria-labelledby="characters-title"
         >
-          <p aria-label="278 total characters">278</p>
+          <p
+            id="character-count"
+            class="card__count"
+            aria-label="278 total characters"
+          >
+            00
+          </p>
           <h3 id="characters-title">Total Characters</h3>
           <img
             src="./assets/images/pattern-character-count.svg"
@@ -108,7 +121,7 @@
           class="cards__card cards__card--words"
           aria-labelledby="words-title"
         >
-          <p aria-label="39 words">39</p>
+          <p id="word-count" aria-label="39 words">00</p>
           <h3 id="words-title">Word Count</h3>
           <img
             src="./assets/images/pattern-word-count.svg"
@@ -120,7 +133,7 @@
           class="cards__card cards__card--sentences"
           aria-labelledby="sentences-title"
         >
-          <p aria-label="4 sentences">04</p>
+          <p aria-label="4 sentences">00</p>
           <h3 id="sentences-title">Sentence Count</h3>
           <img
             src="./assets/images/pattern-sentence-count.svg"
