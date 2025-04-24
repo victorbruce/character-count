@@ -1,3 +1,7 @@
+import {
+  countCharacters,
+} from './utils.js';
+
 // apply saved theme
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
@@ -37,16 +41,9 @@ const characterLimitInput = document.querySelector(".limit-input");
 function characterCount() {
   let text = textarea.value;
   const excludeSpaces = exludesSpacesCheckBox.checked;
+  const count = countCharacters(text, excludeSpaces);
 
-  // is excludeSpaces checkbox checked?
-  if (excludeSpaces) {
-    text = text.replace(/\s/g, ""); // remove spaces
-  }
-
-  // get text length and update count element
-  const count = text.length;
   characterCountElement.textContent = count < 10 ? `0${count}` : count;
-
   checkCharacterLimit(count);
 }
 

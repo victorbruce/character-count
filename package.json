@@ -1,0 +1,28 @@
+{
+  "name": "character-count",
+  "version": "1.0.0",
+  "description": "An app that counts the characters, words, and sentences within a text box.",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorbruce/character-count.git"
+  },
+  "keywords": [
+    "HTML",
+    "JavaScript",
+    "Sass",
+    "Jest"
+  ],
+  "author": "Victor Bruce",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victorbruce/character-count/issues"
+  },
+  "homepage": "https://github.com/victorbruce/character-count#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
