@@ -3,13 +3,10 @@ import {
   getWordCount,
   getSentenceCount,
   estimateReadingTime,
+  applyTheme,
 } from "./utils.js";
 
-// apply saved theme
-function applyTheme(theme) {
-  document.documentElement.dataset.theme = theme;
-  localStorage.setItem("theme", theme);
-}
+
 
 // apply theme from localStorage
 document.addEventListener("DOMContentLoaded", () => {
