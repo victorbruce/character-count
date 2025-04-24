@@ -1,6 +1,4 @@
-import {
-  countCharacters,
-} from './utils.js';
+import { countCharacters, getWordCount } from "./utils.js";
 
 // apply saved theme
 function applyTheme(theme) {
@@ -47,17 +45,6 @@ function characterCount() {
   checkCharacterLimit(count);
 }
 
-// funtion to get the words count
-function getWordCount(text) {
-  const trimmedText = text.trim();
-
-  if (trimmedText === "") return 0;
-
-  const words = trimmedText.split(/\s+/);
-
-  return words.length;
-}
-
 // function to get the sentence count
 function getSentenceCount(text) {
   const trimmedText = text.trim();
@@ -72,10 +59,9 @@ function getSentenceCount(text) {
 }
 
 function wordCount() {
-  const text = textarea.value;
-  const count = getWordCount(text);
+  const count = getWordCount(textarea.value);
 
-  wordCountElement.textContent = count;
+  wordCountElement.textContent = count < 10 ? `0${count}` : count;
 }
 
 function sentenceCount() {
