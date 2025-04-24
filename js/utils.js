@@ -24,3 +24,15 @@ export function estimateReadingTime(text) {
   const wordCount = text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
   return Math.ceil(wordCount / 200);
 }
+
+// apply saved theme
+export function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem("theme", theme);
+}
+
+export function toggleTheme() {
+  const currentTheme = document.documentElement.dataset.theme;
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  applyTheme(newTheme);
+}
