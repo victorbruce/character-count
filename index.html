@@ -60,14 +60,18 @@
           <div>
             <label for="text-input" id="form-section">
               <textarea
+                id="textareaField"
                 placeholder="Start texting here...(or paste your text)"
                 aria-describedby="textarea-help"
+                class=""
               ></textarea>
             </label>
             <small id="textarea-help" class="visually-hidden"
               >You can paste or type your text here for analysis.</small
             >
           </div>
+          <p id="warning-msg" class="form-area__warning-msg"></p>
+
           <div
             class="form-area__checkboxes"
             role="group"
@@ -82,8 +86,11 @@
                 <input type="checkbox" id="character-limit" />
                 <label for="character-limit"> Set Character Limit</label>
               </div>
+              <div>
+                <input type="text" class="limit-input" />
+              </div>
             </div>
-            <p>Approx. reading time: &gt; 1 minute</p>
+            <p id="reading-time">Approx. reading time: &lt;0 minute</p>
           </div>
         </form>
       </section>
@@ -96,7 +103,13 @@
           class="cards__card cards__card--characters"
           aria-labelledby="characters-title"
         >
-          <p aria-label="278 total characters">278</p>
+          <p
+            id="character-count"
+            class="card__count"
+            aria-label="278 total characters"
+          >
+            00
+          </p>
           <h3 id="characters-title">Total Characters</h3>
           <img
             src="./assets/images/pattern-character-count.svg"
@@ -108,7 +121,7 @@
           class="cards__card cards__card--words"
           aria-labelledby="words-title"
         >
-          <p aria-label="39 words">39</p>
+          <p id="word-count" aria-label="39 words">00</p>
           <h3 id="words-title">Word Count</h3>
           <img
             src="./assets/images/pattern-word-count.svg"
@@ -120,7 +133,7 @@
           class="cards__card cards__card--sentences"
           aria-labelledby="sentences-title"
         >
-          <p aria-label="4 sentences">04</p>
+          <p id="sentence-count" aria-label="4 sentences">00</p>
           <h3 id="sentences-title">Sentence Count</h3>
           <img
             src="./assets/images/pattern-sentence-count.svg"
@@ -132,48 +145,17 @@
       <!-- info graphics -->
       <section class="letter-density">
         <h2 class="letter-density__title">Letter Density</h2>
-        <div class="letter-density__items">
-          <div class="letter-density__item">
-            <span class="letter-density__letter">E</span>
-            <div class="letter-density__bar">
-              <div class="letter-density__fill" style="width: 16.06%"></div>
-            </div>
-            <span class="letter-density__count">40 (16.06%)</span>
-          </div>
-
-          <div class="letter-density__item">
-            <span class="letter-density__letter">I</span>
-            <div class="letter-density__bar">
-              <div class="letter-density__fill" style="width: 11.65%"></div>
-            </div>
-            <span class="letter-density__count">29 (11.65%)</span>
-          </div>
-
-          <div class="letter-density__item">
-            <span class="letter-density__letter">T</span>
-            <div class="letter-density__bar">
-              <div class="letter-density__fill" style="width: 11.24%"></div>
-            </div>
-            <span class="letter-density__count">28 (11.24%)</span>
-          </div>
-
-          <div class="letter-density__item">
-            <span class="letter-density__letter">O</span>
-            <div class="letter-density__bar">
-              <div class="letter-density__fill" style="width: 8.84%"></div>
-            </div>
-            <span class="letter-density__count">22 (8.84%)</span>
-          </div>
-
-          <div class="letter-density__item">
-            <span class="letter-density__letter">N</span>
-            <div class="letter-density__bar">
-              <div class="letter-density__fill" style="width: 8.43%"></div>
-            </div>
-            <span class="letter-density__count">21 (8.43%)</span>
-          </div>
+        <p id="empty-message" class="letter-density__empty-message">
+          No characters found. Start typing to see letter density.
+        </p>
+        <div
+          id="letter-density-container"
+          class="letter-density__items is-hidden"
+        >
+          <!-- Display Letter Density Analytics-->
         </div>
-        <button class="letter-density__more">
+
+        <button id="collapse-btn" class="letter-density__more is-hidden">
           See more
           <svg
             width="12"
@@ -184,12 +166,12 @@
           >
             <path
               d="M5.71875 6.375L1.09375 1.78125C0.9375 1.65625 0.9375 1.40625 1.09375 1.25L1.71875 0.65625C1.875 0.5 2.09375 0.5 2.25 0.65625L6 4.34375L9.71875 0.65625C9.875 0.5 10.125 0.5 10.25 0.65625L10.875 1.25C11.0312 1.40625 11.0312 1.65625 10.875 1.78125L6.25 6.375C6.09375 6.53125 5.875 6.53125 5.71875 6.375Z"
-              fill="#E4E4EF"
+              fill="currentColor"
             />
           </svg>
         </button>
       </section>
     </main>
-    <script src="./js/app.js"></script>
+    <script type="module" src="./js/characterCounter.js"></script>
   </body>
 </html>

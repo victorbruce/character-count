@@ -45,6 +45,8 @@ $orange-600: #da3701;
   --yellow: #{$yellow-500};
   --card-text: #{$dark-primary};
   --bar-bg: #{$light-primary-100};
+  --error: #{$orange-600};
+  --empty-message: #404254;
 }
 
 [data-theme="dark"] {
@@ -58,6 +60,8 @@ $orange-600: #da3701;
   --textfield-border: #{$dark-primary-700};
   --checkbox-border: #{$light-primary-200};
   --bar-bg: #{$dark-primary-800};
+  --error: #{$orange-600};
+  --empty-message: #{$dark-text-secondary};
 }
 
 @font-face {
@@ -109,4 +113,12 @@ body {
   clip: rect(0, 0, 0, 0);
   clip-path: inset(50%);
   overflow: hidden;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+.letter-density__item.is-collapsed {
+  display: none;
 }
