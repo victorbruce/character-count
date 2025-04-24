@@ -29,4 +29,11 @@ describe("Letter analysis utilties", () => {
   describe("countCharacters()", () => {
     expect(countCharacters("a b c", true)).toBe(3);
   });
+
+  describe("estimateReadingTime()", () => {
+    test("reading time is correct", () => {
+      const text = "word ".repeat(400);
+      expect(estimateReadingTime(text)).toBe(2);
+    });
+  });
 });
