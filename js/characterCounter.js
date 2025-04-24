@@ -1,4 +1,9 @@
-import { countCharacters, getWordCount, getSentenceCount } from "./utils.js";
+import {
+  countCharacters,
+  getWordCount,
+  getSentenceCount,
+  estimateReadingTime,
+} from "./utils.js";
 
 // apply saved theme
 function applyTheme(theme) {
@@ -109,13 +114,10 @@ function checkCharacterLimit(currentCount) {
 }
 
 function updateReadingTime() {
-  const text = textarea.value.trim();
-  const wordCount = text === "" ? 0 : text.split(/\s+/).length;
-  const wordsPerMinute = 200;
-  const readingTime = Math.ceil(wordCount / wordsPerMinute);
+  const readingTime = estimateReadingTime(textarea.value);
 
   const readingTimeElement = document.getElementById("reading-time");
-  readingTimeElement.textContent = `Approx. reading time: > ${readingTime} minutes;`;
+  readingTimeElement.textContent = `Approx. reading time: <${readingTime} minutes;`;
 }
 
 function renderLetterDensity() {
@@ -184,11 +186,11 @@ collapseBtn.addEventListener("click", () => {
     ".letter-density__item.is-collapsed"
   );
 
-  const isExpanded = collapseBtn.textContent === "Less";
+  const isExpanded = collapseBtn.textContent === "See less";
 
   hiddenItems.forEach((item) => {
     item.style.display = isExpanded ? "none" : "flex";
   });
 
-  collapseBtn.textContent = isExpanded ? "More" : "Less";
+  collapseBtn.textContent = isExpanded ? "See more" : "See less";
 });
