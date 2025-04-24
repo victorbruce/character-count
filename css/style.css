@@ -373,7 +373,7 @@
   --textfield-border: #2a2b37;
   --checkbox-border: #e4e4ef;
   --bar-bg: #21222c;
-  --error: #fe8159;
+  --error: #da3701;
   --empty-message: #e4e4ef;
 }
 
@@ -426,6 +426,10 @@ body {
 
 .is-hidden {
   display: none !important;
+}
+
+.letter-density__item.is-collapsed {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
