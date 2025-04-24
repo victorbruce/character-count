@@ -1,6 +1,9 @@
 import {
   countCharacters,
-} from './utils.js';
+  getWordCount,
+  getSentenceCount,
+  estimateReadingTime,
+} from "./utils.js";
 
 // apply saved theme
 function applyTheme(theme) {
@@ -47,41 +50,15 @@ function characterCount() {
   checkCharacterLimit(count);
 }
 
-// funtion to get the words count
-function getWordCount(text) {
-  const trimmedText = text.trim();
-
-  if (trimmedText === "") return 0;
-
-  const words = trimmedText.split(/\s+/);
-
-  return words.length;
-}
-
-// function to get the sentence count
-function getSentenceCount(text) {
-  const trimmedText = text.trim();
-
-  if (trimmedText === "") return 0;
-
-  const sentences = trimmedText
-    .split(/[\.\!\?]+(?:\s|$)/)
-    .filter((sentence) => sentence.trim().length > 0);
-
-  return sentences.length;
-}
-
 function wordCount() {
-  const text = textarea.value;
-  const count = getWordCount(text);
+  const count = getWordCount(textarea.value);
 
-  wordCountElement.textContent = count;
+  wordCountElement.textContent = count < 10 ? `0${count}` : count;
 }
 
 function sentenceCount() {
-  const text = textarea.value;
-  const count = getSentenceCount(text);
-  sentenceCountElement.textContent = count;
+  const count = getSentenceCount(textarea.value);
+  sentenceCountElement.textContent = count < 10 ? `0${count}` : count;
 }
 
 function toggleCharacterLimitField() {
@@ -137,13 +114,10 @@ function checkCharacterLimit(currentCount) {
 }
 
 function updateReadingTime() {
-  const text = textarea.value.trim();
-  const wordCount = text === "" ? 0 : text.split(/\s+/).length;
-  const wordsPerMinute = 200;
-  const readingTime = Math.ceil(wordCount / wordsPerMinute);
+  const readingTime = estimateReadingTime(textarea.value);
 
   const readingTimeElement = document.getElementById("reading-time");
-  readingTimeElement.textContent = `Approx. reading time: > ${readingTime} minutes;`;
+  readingTimeElement.textContent = `Approx. reading time: <${readingTime} minutes;`;
 }
 
 function renderLetterDensity() {
@@ -212,11 +186,11 @@ collapseBtn.addEventListener("click", () => {
     ".letter-density__item.is-collapsed"
   );
 
-  const isExpanded = collapseBtn.textContent === "Less";
+  const isExpanded = collapseBtn.textContent === "See less";
 
   hiddenItems.forEach((item) => {
     item.style.display = isExpanded ? "none" : "flex";
   });
 
-  collapseBtn.textContent = isExpanded ? "More" : "Less";
+  collapseBtn.textContent = isExpanded ? "See more" : "See less";
 });
