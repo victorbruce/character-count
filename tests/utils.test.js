@@ -1,4 +1,9 @@
-const { getWordCount } = require("../js/utils.js");
+const {
+  getWordCount,
+  getSentenceCount,
+  countCharacters,
+  estimateReadingTime,
+} = require("../js/utils.js");
 
 describe("Letter analysis utilties", () => {
   describe("getWordCount()", () => {
@@ -12,6 +17,12 @@ describe("Letter analysis utilties", () => {
 
     test("trims extra spaces", () => {
       expect(getWordCount("  one  two  three  ")).toBe(3);
+    });
+  });
+
+  describe("getSentenceCount()", () => {
+    test("sentence count works", () => {
+      expect(getSentenceCount("Hi. Bye? Wait!")).toBe(3);
     });
   });
 });
