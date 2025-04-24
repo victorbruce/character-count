@@ -25,4 +25,8 @@ describe("Letter analysis utilties", () => {
       expect(getSentenceCount("Hi. Bye? Wait!")).toBe(3);
     });
   });
+
+  describe("countCharacters()", () => {
+    expect(countCharacters("a b c", true)).toBe(3);
+  });
 });
