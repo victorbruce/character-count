@@ -428,4 +428,8 @@ body {
   display: none !important;
 }
 
+.letter-density__item.is-collapsed {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */

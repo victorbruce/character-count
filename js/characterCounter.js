@@ -6,8 +6,6 @@ import {
   applyTheme,
 } from "./utils.js";
 
-
-
 // apply theme from localStorage
 document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme") || "light";
@@ -103,7 +101,7 @@ function checkCharacterLimit(currentCount) {
     warningMessage.classList.add("form-area__warning-msg-active");
     textarea.classList.add("form-area__textarea-limit-exceeded");
 
-    warningMessage.innerHTML = `<img src="../assets/images/icon-info.svg" alt="warning" class="form-area__warning-icon" /> Limit reached! Your text exceeds ${limitValue} characters.`;
+    warningMessage.innerHTML = `<img src="/assets/images/icon-info.svg" alt="warning" class="form-area__warning-icon" /> Limit reached! Your text exceeds ${limitValue} characters.`;
   } else {
     warningMessage.classList.remove("form-area__warning-msg-active");
     textarea.classList.remove("form-area__textarea-limit-exceeded");
@@ -114,7 +112,9 @@ function updateReadingTime() {
   const readingTime = estimateReadingTime(textarea.value);
 
   const readingTimeElement = document.getElementById("reading-time");
-  readingTimeElement.textContent = `Approx. reading time: <${readingTime} minutes;`;
+  readingTimeElement.textContent = `Approx. reading time: <${readingTime} minute${
+    readingTime > 1 ? "s" : ""
+  }`;
 }
 
 function renderLetterDensity() {
@@ -161,7 +161,9 @@ function renderLetterDensity() {
 
   if (sortedLetters.length > 5) {
     collapseBtn.classList.remove("is-hidden");
-    collapseBtn.textContent = "More";
+    collapseBtn.innerHTML = `<span>See more <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.71875 6.375L1.09375 1.78125C0.9375 1.65625 0.9375 1.40625 1.09375 1.25L1.71875 0.65625C1.875 0.5 2.09375 0.5 2.25 0.65625L6 4.34375L9.71875 0.65625C9.875 0.5 10.125 0.5 10.25 0.65625L10.875 1.25C11.0312 1.40625 11.0312 1.65625 10.875 1.78125L6.25 6.375C6.09375 6.53125 5.875 6.53125 5.71875 6.375Z" fill="currentColor"/>
+</svg></span>`;
   }
 }
 
@@ -183,11 +185,24 @@ collapseBtn.addEventListener("click", () => {
     ".letter-density__item.is-collapsed"
   );
 
-  const isExpanded = collapseBtn.textContent === "See less";
+  const isExpanded =
+    collapseBtn.querySelector("span") &&
+    collapseBtn.querySelector("span").textContent.trim() === "See less";
 
   hiddenItems.forEach((item) => {
     item.style.display = isExpanded ? "none" : "flex";
   });
 
-  collapseBtn.textContent = isExpanded ? "See more" : "See less";
+  const span = collapseBtn.querySelector("span");
+
+  if (isExpanded) {
+    span.innerHTML = `See more <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.71875 6.375L1.09375 1.78125C0.9375 1.65625 0.9375 1.40625 1.09375 1.25L1.71875 0.65625C1.875 0.5 2.09375 0.5 2.25 0.65625L6 4.34375L9.71875 0.65625C9.875 0.5 10.125 0.5 10.25 0.65625L10.875 1.25C11.0312 1.40625 11.0312 1.65625 10.875 1.78125L6.25 6.375C6.09375 6.53125 5.875 6.53125 5.71875 6.375Z" fill="currentColor"/>
+</svg>`;
+  } else {
+    span.innerHTML = `See less <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.28125 0.625L10.9062 5.21875C11.0625 5.34375 11.0625 5.59375 10.9062 5.75L10.2812 6.34375C10.125 6.5 9.90625 6.5 9.75 6.34375L6 2.65625L2.28125 6.34375C2.125 6.5 1.875 6.5 1.75 6.34375L1.125 5.75C0.96875 5.59375 0.96875 5.34375 1.125 5.21875L5.75 0.625C5.90625 0.46875 6.125 0.46875 6.28125 0.625Z" fill="currentColor"/>
+</svg>
+`;
+  }
 });
