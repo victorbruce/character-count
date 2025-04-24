@@ -4,7 +4,8 @@
   "description": "An app that counts the characters, words, and sentences within a text box.",
   "main": "characterCounter.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test-coverage": "jest --coverage"
   },
   "type": "module",
   "repository": {
