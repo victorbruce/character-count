@@ -22,7 +22,13 @@ export function countCharacters(text, excludeSpaces = false) {
 
 export function estimateReadingTime(text) {
   const wordCount = text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
-  return Math.ceil(wordCount / 200);
+  let readingTime = Math.ceil(wordCount / 200);
+
+  if (wordCount > 100) {
+    readingTime = Math.max(readingTime, 1);
+  }
+
+  return readingTime;
 }
 
 // apply saved theme
