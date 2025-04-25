@@ -24,6 +24,7 @@ This project is built using **HTML**, **SCSS**, **JavaScript** and hosted on **G
 - HTML
 - SCSS
 - JavaScript
+- Jest
 
 ## 📦 Installing
 
@@ -36,7 +37,7 @@ cd character-count
 
 ## 💻 Running the Application
 
-To start the development server:
+**To start the development server:**
 
 - Install the **Live Server extension**(by Ritwick Dey) in VsCode
 - Right-click anywhere in the html code
@@ -45,6 +46,12 @@ To start the development server:
 Or
 
 Double click the `index.html` file to open the code in the browser of your choice.
+
+**Running the tests:**
+
+To run the test, run `npm run test`
+
+To get the test coverage, `npm run test-coverage`
 
 ## 📸 Screenshots
 
